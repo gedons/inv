@@ -43,7 +43,7 @@ Route::prefix('/admin')->namespace('Admin')->group(function (){
         //end invest routes
 
         //message route
-        Route::post('message/send', [MessageController::class, 'sentMessage'])->name('admin.message');
+        Route::post('message/send', [MessageController::class, 'sentMessage'])->name('message.send');
         //end message route
 
         Route::get('activities', [AdminController::class, 'activities'])->name('admin.activities');
