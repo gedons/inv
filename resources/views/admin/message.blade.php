@@ -230,7 +230,7 @@
                         <div class="card-header">{{ __('Send Message') }}</div>
                         
                         <div class="card-body">
-                            <form method="POST" action="{{route('message.send')}}">
+                            <form method="POST" action="admin/message/send">
                                 @csrf
         
                                 <div class="row mb-3">
