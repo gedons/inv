@@ -204,13 +204,33 @@
                        
                     </div>
 
-                    <div class="card"></div>
+                    
+                    @if(Session::has('message'))
+                    <p class="alert alert-success">{{ Session::get('message') }}</p>
+                    @endif
+
+                    <div class="row">
+
+                        <div class="col-lg-6">
+
+                            <!-- Basic Card Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Inbox</h6>
+                                </div>
+                                <div class="card-body">
+                                   
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
 
                     <div class="card">
                         <div class="card-header">{{ __('Send Message') }}</div>
                         
                         <div class="card-body">
-                            <form method="POST" action="">
+                            <form method="POST" action="{{route('admin.message')}}">
                                 @csrf
         
                                 <div class="row mb-3">
@@ -233,7 +253,7 @@
                                     <div class="col-md-6">
                                         <input id="message" type="text" class="form-control @error('message') is-invalid @enderror" name="message" value="{{ old('message') }}"  autocomplete="message">
         
-                                        @error('description')
+                                        @error('message')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

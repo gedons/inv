@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\InvestmentController;
+use App\Http\Controllers\MessageController;
 
 
 
@@ -41,6 +42,10 @@ Route::prefix('/admin')->namespace('Admin')->group(function (){
         Route::post('invest/delete/{id}', [InvestmentController::class, 'delete'])->name('invest.delete');
         //end invest routes
 
+        //message route
+        Route::post('message/send', [MessageController::class, 'sentMessage'])->name('admin.message');
+        //end message route
+
         Route::get('activities', [AdminController::class, 'activities'])->name('admin.activities');
         Route::get('message', [AdminController::class, 'message'])->name('admin.message');
 		Route::get('logout', [AdminController::class, 'logout'])->name('admin.logout');
@@ -50,4 +55,4 @@ Route::prefix('/admin')->namespace('Admin')->group(function (){
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home/activities', [App\Http\Controllers\HomeController::class, 'activities'])->name('activities');
 Route::get('/home/message', [App\Http\Controllers\HomeController::class, 'message'])->name('message');
-Route::post('/home/message/send', [App\Http\Controllers\HomeController::class, 'messageSent']);
+Route::post('/home/message/send', [App\Http\Controllers\HomeController::class, 'messageSent'])->name('message');
