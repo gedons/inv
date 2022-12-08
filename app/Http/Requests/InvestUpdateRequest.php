@@ -13,18 +13,28 @@ class InvestUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function rules()
     {
         return [
-            //
+            'name' => 'required|max:100',	
+            'amount' => 'required|max:100',    
+            'description' => 'required|max:1000', 				
+        ];
+    }
+
+    public function messages(){
+        return [
+            'name.required' => 'Name is required!',
+            'amount.required' => 'Amount is required!',
+            'description.required' => 'Description is required!'
         ];
     }
 }
