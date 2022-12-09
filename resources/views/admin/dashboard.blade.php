@@ -77,7 +77,6 @@
                 <a class="nav-link" href="{{route('admin.message')}}">
                     <i class="fas fa-fw fa-envelope"></i>
                     <span>Message</span>
-                    <i class="fas fa-bell fa-fw"></i>
                     <span class="badge badge-danger badge-counter">{{$messageCount->count()}}</span>
                 </a>
             </li>
