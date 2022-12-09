@@ -28,7 +28,8 @@ class HomeController extends Controller
     {
         $investments = Investment::all();
         $sum = Investment::sum('amount');
-        return view('home',compact('investments','sum'));
+        $messageCount = Message::all();
+        return view('home',compact('investments','sum','messageCount'));
     }
 
     public function activities()
