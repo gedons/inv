@@ -44,6 +44,7 @@ Route::prefix('/admin')->namespace('Admin')->group(function (){
 
         //message route
         Route::post('inbox/sent', [MessageController::class, 'sent'])->name('inbox.sent');
+        Route::post('inbox/delete/{id}', [MessageController::class, 'delete'])->name('inbox.delete');
         //end message route
 
         Route::get('activities', [AdminController::class, 'activities'])->name('admin.activities');

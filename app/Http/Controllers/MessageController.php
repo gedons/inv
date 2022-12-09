@@ -18,4 +18,11 @@ class MessageController extends Controller
        // Notification::send(auth()->user(), new UserCreatePost($data['title']));
         return Redirect()->back()->with('message', 'Message Sent Successfully!!!');
     }
+
+    public function delete($id){
+        $message = Message::where('id',$id)->first();
+        $message->delete();
+
+        return Redirect()->back()->with('message', 'Message Deleted Successfully!!!');
+    }
 }

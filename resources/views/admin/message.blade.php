@@ -201,12 +201,18 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Message</h1>
-                       
+                        @foreach($messages as $message)
+                            <b>You:</b> {{ $message->desc }}<br/>
+                            <a href="#" class="btn btn-light" data-toggle="modal" data-target="#deleteModal" style="color:red;">Delete</a>
+                        @endforeach
                     </div>
 
                     
                     @if(Session::has('message'))
                     <p class="alert alert-success">{{ Session::get('message') }}</p>
+                    @endif
+                    @if(Session::has('danger'))
+                    <p class="alert alert-danger">{{ Session::get('danger') }}</p>
                     @endif
 
                     <div class="row">
@@ -237,7 +243,7 @@
                                     <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
         
                                     <div class="col-md-6">
-                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="Johnny"  autocomplete="name" autofocus>
+                                        <input id="name" type="hidden" class="form-control @error('name') is-invalid @enderror" name="name" value="Johnny"  autocomplete="name" autofocus>
         
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -299,6 +305,28 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+            <!-- Delete Modal-->
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel1">Are You Sure?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Delete" Below. Action Cannot Be Undone!</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <form action="{{route('inbox.delete', $message->id)}}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">

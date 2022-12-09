@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\Investment;
+use App\Models\Message;
 
 class AdminController extends Controller
 {
@@ -44,7 +45,8 @@ class AdminController extends Controller
 
     public function message()
     {
-        return view('admin.message');
+        $messages = Message::all();
+        return view('admin.message', compact('messages'));
     }
 
     public function logout()
