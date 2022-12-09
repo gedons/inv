@@ -78,7 +78,7 @@
                     <i class="fas fa-fw fa-envelope"></i>
                     <span>Message</span>
                     <i class="fas fa-bell fa-fw"></i>
-                    <span class="badge badge-danger badge-counter">{{$messageCount}}</span>
+                    <span class="badge badge-danger badge-counter">{{$messageCount->count()}}</span>
                 </a>
             </li>
 
