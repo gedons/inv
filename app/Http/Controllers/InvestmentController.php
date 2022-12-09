@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Investment;
 use App\Models\Admin;
-use App\Models\Message;
-use App\Http\Requests\MessageRequest;
 use App\Http\Requests\InvestRequest;
 use App\Http\Requests\InvestUpdateRequest;
 
@@ -45,13 +43,5 @@ class InvestmentController extends Controller
 
         return Redirect(route('admin.dashboard'))->with('danger', 'Investment Deleted Successfully!!!');
     }
-    public function sent(MessageRequest $request)
-    {
-        $validated = $request->validated();
-
-        $data = Message::create($validated);
-
-       // Notification::send(auth()->user(), new UserCreatePost($data['title']));
-        return Redirect()->back()->with('message', 'Message Sent Successfully!!!');
-    }
+  
 }

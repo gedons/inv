@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\MessageRequest;
 use App\Models\Message;
+ 
 
 class MessageController extends Controller
 {
-    public function sentMessage(MessageRequest $request)
+    public function sent(MessageRequest $request)
     {
         $validated = $request->validated();
 
