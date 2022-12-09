@@ -27,7 +27,8 @@ class AdminController extends Controller
     {
         $investments = Investment::all();
         $sum = Investment::sum('amount');
-        return view('admin.dashboard', compact('investments','sum'));
+        $messages = Message::all()->count();
+        return view('admin.dashboard', compact('investments','sum','count'));
     }
 
     public function invest()

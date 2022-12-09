@@ -76,6 +76,8 @@
                 <a class="nav-link" href="{{route('admin.message')}}">
                     <i class="fas fa-fw fa-envelope"></i>
                     <span>Message</span>
+                    <i class="fas fa-bell fa-fw"></i>
+                    <span class="badge badge-danger badge-counter">3+</span>
                 </a>
             </li>
 
