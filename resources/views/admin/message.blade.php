@@ -31,7 +31,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin.invest')}}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -221,13 +221,8 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Inbox</h6>
                                 </div>
                                 <div class="card-body">
-                                @foreach($names1 as $message1)
-                                    <b>You:</b> {{ $message1->desc }}<br/>
-
-                                    @foreach($names2 as $message2)
-                                    <b>Jena:</b> {{ $message2->desc }}<br/>
-
-                                    @endforeach
+                                @foreach($messages as $message)
+                                    <b>{{$message->name}}:</b> {{ $message->desc }}<br/>
                                     <a href="#" class="btn btn-link" data-toggle="modal" data-target="#deleteModal" style="color:red;">Delete</a>
                                 @endforeach
                                 </div>

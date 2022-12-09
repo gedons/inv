@@ -45,11 +45,8 @@ class AdminController extends Controller
 
     public function message()
     {
-       // $messages = Message::all();
-        $names1 = Message::where('name','Johnny')->first();
-        $names2 = Message::where('name','Jena')->first();
-        
-        return view('admin.message', compact('names1','names2'));
+        $messages = Message::all();
+        return view('admin.message', compact('messages'));
     }
 
     public function logout()
