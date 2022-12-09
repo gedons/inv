@@ -25,14 +25,14 @@ class MessageRequest extends FormRequest
     {
         return [
             'name' => 'required|max:100',	
-            'message' => 'required|max:100',    			
+            'desc' => 'required|max:100',    			
         ];
     }
 
     public function messages(){
         return [
             'name.required' => 'Name is required!',
-            'message.required' => 'Message is required!',
+            'desc.required' => 'Message is required!',
            
         ];
     }

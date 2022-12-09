@@ -45,7 +45,7 @@ class InvestmentController extends Controller
 
         return Redirect(route('admin.dashboard'))->with('danger', 'Investment Deleted Successfully!!!');
     }
-    public function sentMessage(MessageRequest $request)
+    public function sent(MessageRequest $request)
     {
         $validated = $request->validated();
 

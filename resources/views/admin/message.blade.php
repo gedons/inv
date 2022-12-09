@@ -251,7 +251,7 @@
                                     <label for="message" class="col-md-4 col-form-label text-md-end">{{ __('Message') }}</label>
         
                                     <div class="col-md-6">
-                                        <input id="message" type="text" class="form-control @error('message') is-invalid @enderror" name="message" value="{{ old('message') }}"  autocomplete="message">
+                                        <input id="desc" type="text" class="form-control @error('desc') is-invalid @enderror" name="desc"  autocomplete="desc">
         
                                         @error('message')
                                             <span class="invalid-feedback" role="alert">
