@@ -201,10 +201,6 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Message</h1>
-                        @foreach($messages as $message)
-                            <b>You:</b> {{ $message->desc }}<br/>
-                            <a href="#" class="btn btn-light" data-toggle="modal" data-target="#deleteModal" style="color:red;">Delete</a>
-                        @endforeach
                     </div>
 
                     
@@ -225,7 +221,15 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Inbox</h6>
                                 </div>
                                 <div class="card-body">
-                                   
+                                @foreach($names1 as $message1)
+                                    <b>You:</b> {{ $message1->desc }}<br/>
+
+                                    @foreach($names2 as $message2)
+                                    <b>Jena:</b> {{ $message2->desc }}<br/>
+
+                                    @endforeach
+                                    <a href="#" class="btn btn-link" data-toggle="modal" data-target="#deleteModal" style="color:red;">Delete</a>
+                                @endforeach
                                 </div>
                             </div>
 
