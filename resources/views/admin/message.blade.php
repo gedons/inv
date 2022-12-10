@@ -225,7 +225,7 @@
                                 <div class="card-body">
                                 @foreach($messages as $message)
                                     <b>{{$message->name}}:</b> {{ $message->desc }}
-                                    <a href="#" class="btn btn-link" data-toggle="modal" data-target="#deleteModal" style="color:red;">Delete</a><br/>
+                                    <a href="#" class="btn btn-link" data-toggle="modal" data-target="#deleteModal" style="color:red;">Delete</a><br/><br/>
                                 @endforeach
                                 </div>
                             </div>
