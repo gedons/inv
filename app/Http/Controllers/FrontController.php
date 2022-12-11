@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\MessageRequest;
 use App\Models\Message;
+use App\Models\User;
+use App\Notifications\MessageCreated;
 
 class FrontController extends Controller
 {
@@ -13,6 +15,10 @@ class FrontController extends Controller
         $validated = $request->validated();
 
         $data = Message::create($validated);
+
+        //notify
+        // $user = User::first();
+        // $user->notify(new MessageCreated($inbox));
 
        // Notification::send(auth()->user(), new UserCreatePost($data['title']));
         return Redirect()->back()->with('message', 'Message Sent Successfully!!!');
