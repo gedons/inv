@@ -55,6 +55,6 @@ Route::prefix('/admin')->namespace('Admin')->group(function (){
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home/activities', [App\Http\Controllers\HomeController::class, 'activities'])->name('activities');
-Route::get('/home/message', [App\Http\Controllers\HomeController::class, 'message'])->name('front.inbox');
-Route::post('/home/message/send', [App\Http\Controllers\FrontController::class, 'sent'])->name('front.send');
-Route::post('/home/message/delete/{id}', [App\Http\Controllers\FrontController::class, 'delete'])->name('front.delete');
+Route::get('/home/inbox', [App\Http\Controllers\HomeController::class, 'inbox'])->name('front.inbox');
+Route::post('/home/inbox/send', [App\Http\Controllers\FrontController::class, 'sent'])->name('front.send');
+Route::post('/home/inbox/delete/{id}', [App\Http\Controllers\FrontController::class, 'delete'])->name('front.delete');
