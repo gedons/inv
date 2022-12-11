@@ -155,7 +155,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hi Jena</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hi {{ Auth::user()->name }}</span>
                             <img class="img-profile rounded-circle"
                                 src="{{asset('dash/img/undraw_profile.svg')}}">
                         </a>
@@ -207,8 +207,7 @@
 
                         <div class="card-body">
                         @foreach($messages as $message)
-                            <b>{{$message->name}}:</b> {{ $message->desc }}
-                            <a href="#" class="btn btn-link" data-toggle="modal" data-target="#deleteModal" style="color:red;">Delete</a><br/>
+                            <b>{{$message->name}}:</b> {{ $message->desc }}<br/>
                         @endforeach                            
                         </div>
                         </div>
@@ -226,7 +225,7 @@
                             <div class="row mb-3">
 
                                 <div class="col-md-6">
-                                    <input id="name" type="hidden" class="form-control @error('name') is-invalid @enderror" name="name" value="Johnny"  autocomplete="name" autofocus>
+                                    <input id="name" type="hidden" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ Auth::user()->name }}"  autocomplete="name" autofocus>
     
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
