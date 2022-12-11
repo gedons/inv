@@ -66,7 +66,7 @@
             </li>
 
                <li class="nav-item">
-                <a class="nav-link" href="{{route('message')}}">
+                <a class="nav-link" href="{{route('front.inbox')}}">
                     <i class="fas fa-fw fa-envelope"></i>
                     <span>Message</span>
                 </a>

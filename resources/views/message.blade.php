@@ -43,7 +43,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{route('home')}}>
+                <a class="nav-link" href="{{route('home')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -65,7 +65,7 @@
             </li>
 
                <li class="nav-item">
-                <a class="nav-link" href="{{route('message')}}">
+                <a class="nav-link" href="{{route('front.inbox')}}">
                     <i class="fas fa-fw fa-envelope"></i>
                     <span>Message</span>
                     <i class="fas fa-bell fa-fw"></i>
