@@ -56,6 +56,7 @@
                 Interface
             </div>
 
+
             <!-- Nav Item - Utilities Collapse Menu -->
              <li class="nav-item">
                 <a class="nav-link" href="{{route('activities')}}">
@@ -68,16 +69,20 @@
                 <a class="nav-link" href="{{route('front.inbox')}}">
                     <i class="fas fa-fw fa-envelope"></i>
                     <span>Message</span>
-                    <i class="fas fa-bell fa-fw"></i>
-                    <span class="badge badge-danger badge-counter">3+</span>
                 </a>
             </li>
 
                <li class="nav-item">
-                <a class="nav-link" href="{{route('logout')}}">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>Logout</span>
-                </a>
+                   <a class="nav-link" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        <i class="fas fa-fw fa-user"></i>
+                                        <span>Logout</span>
+                                </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
             </li>
 
 
@@ -160,7 +165,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hi Johnny</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hi {{ Auth::user()->name }}</span>
                                 <img class="img-profile rounded-circle"
                                     src="{{asset('dash/img/undraw_profile.svg')}}">
                             </a>
@@ -188,88 +193,80 @@
                 </nav>
                 <!-- End of Topbar -->
 
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
+                    <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Message</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                         <a href="{{route('home')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Back </a>
                     </div>
+                    <!-- Content Row -->
+                    <div class="row">
 
-                    
-                    <!-- @if(Session::has('message'))
-                    <p class="alert alert-success">{{ Session::get('message') }}</p>
-                    @endif
-                    @if(Session::has('danger'))
-                    <p class="alert alert-danger">{{ Session::get('danger') }}</p>
-                    @endif -->
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Investment (Total)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b>$</b> {{number_format($sum)}}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="row">
 
-                        <div class="col-lg-6">
+                        {{-- <div class="col-lg-6">
 
                             <!-- Basic Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Inbox</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Basic Card Example</h6>
                                 </div>
                                 <div class="card-body">
-                                <!-- @foreach($messages as $message)
-                                    <b>{{$message->name}}:</b> {{ $message->desc }}
-                                    <a href="#" class="btn btn-link" data-toggle="modal" data-target="#deleteModal" style="color:red;">Delete</a><br/>
-                                @endforeach -->
+                                    The styling for this basic card example is created by using default Bootstrap
+                                    utility classes. By using utility classes, the style of the card component can be
+                                    easily modified with no need for any custom CSS!
                                 </div>
                             </div>
 
+                        </div> --}}
+
+                        @foreach($activities as $activity)
+                        <div class="col-lg-6">
+
+                            <!-- Dropdown Card Example -->
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">{{$activity->name}}</h6>
+                                    <div>
+                                        {{$activity->created_at->diffForHumans()}}
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <b>${{number_format($activity->amount)}}</b> was successfully paid in by {{$activity->name}}
+                                </div>
+                            </div>
+
+
                         </div>
+                        @endforeach
                     </div>
 
-                    <!-- <div class="card">
-                        <div class="card-header">{{ __('Send Message') }}</div>
-                        
-                        <div class="card-body">
-                            <form method="POST" action="{{ route('front.sent') }}">
-                                @csrf
-        
-                                <div class="row mb-3">
-                                 
-                                    <div class="col-md-6">
-                                        <input id="name" type="hidden" class="form-control @error('name') is-invalid @enderror" name="name" value="Johnny"  autocomplete="name" autofocus>
-        
-                                        @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-        
-                                <div class="row mb-3">
-                                    <label for="message" class="col-md-4 col-form-label text-md-end">{{ __('Message') }}</label>
-        
-                                    <div class="col-md-6">
-                                        <input id="desc" type="text" class="form-control @error('desc') is-invalid @enderror" name="desc"  autocomplete="desc">
-        
-                                        @error('message')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-        
-        
-                                <div class="row mb-0">
-                                    <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('Send') }}
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div> -->
+
                 </div>
                 <!-- /.container-fluid -->
 
@@ -311,7 +308,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{ route('logout')}}">Logout</a>
+                    <a class="btn btn-primary" href="{{ route('admin.logout')}}">Logout</a>
                 </div>
             </div>
         </div>
