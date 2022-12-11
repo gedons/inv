@@ -219,7 +219,45 @@
                         {{ __('Send Message') }}
                         </div>
                         <div class="card-body">
+                        <form method="POST" action="{{ route('inbox.sent') }}">
+                                @csrf
+        
+                                <div class="row mb-3">
 
+                                    <div class="col-md-6">
+                                        <input id="name" type="hidden" class="form-control @error('name') is-invalid @enderror" name="name" value="Johnny"  autocomplete="name" autofocus>
+        
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+        
+                                <div class="row mb-3">
+                                    <label for="message" class="col-md-4 col-form-label text-md-end">{{ __('Message') }}</label>
+        
+                                    <div class="col-md-6">
+                                        <input id="desc" type="text" class="form-control @error('desc') is-invalid @enderror" name="desc"  autocomplete="desc">
+        
+                                        @error('message')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+        
+        
+                                <div class="row mb-0">
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Send') }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
