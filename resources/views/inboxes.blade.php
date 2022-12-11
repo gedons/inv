@@ -207,8 +207,19 @@
                         </div>
 
                         <div class="card-body">
-                            
+
                         </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="card">
+                        <div class="card-header">
+                        {{ __('Send Message') }}
+                        </div>
+                        <div class="card-body">
+
                         </div>
                     </div>
                 </div>
