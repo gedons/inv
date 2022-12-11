@@ -43,7 +43,6 @@ class HomeController extends Controller
     public function message()
     {
         $messages = Message::all();
-        dd($messages);
         return view('message', compact('messages'));
     }
 
