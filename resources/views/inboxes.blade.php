@@ -214,13 +214,13 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-12">
+                    
                         <div class="card">
                             <div class="card-header">
                             {{ __('Send Message') }}
                             </div>
                             <div class="card-body">
-                            <form method="POST" action="{{ route('inbox.sent') }}">
+                            <form method="POST" action="{{ route('front.send') }}">
                                     @csrf
             
                                     <div class="row mb-3">
@@ -261,7 +261,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+             
 
                 </div>
                 
