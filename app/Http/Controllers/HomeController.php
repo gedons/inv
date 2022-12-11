@@ -40,13 +40,6 @@ class HomeController extends Controller
         return view('activities', compact('activities','sum'));
     }
 
-    public function inbox()
-    {
-        $activities = Investment::all();
-        $messages = Message::all();
-        $sum = Investment::sum('amount');
-        return view('message', compact('messages','activities','sum'));
-    }
 
 
 }

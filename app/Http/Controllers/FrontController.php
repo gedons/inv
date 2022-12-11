@@ -10,6 +10,13 @@ use App\Notifications\MessageCreated;
 
 class FrontController extends Controller
 {
+    
+    public function inbox()
+    {
+        $inboxes = Message::all();
+        return view('inboxes', compact('inboxes'));
+    }
+
     public function sent(MessageRequest $request)
     {
         $validated = $request->validated();

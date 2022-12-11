@@ -44,7 +44,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{route('admin.dashboard')}}">
+                <a class="nav-link" href="{{route('home')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -193,91 +193,88 @@
                 </nav>
                 <!-- End of Topbar -->
 
+
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Message</h1>
                     </div>
 
-                    <!-- Content Row -->
+                    
+                    @if(Session::has('message'))
+                    <p class="alert alert-success">{{ Session::get('message') }}</p>
+                    @endif
+                    @if(Session::has('danger'))
+                    <p class="alert alert-danger">{{ Session::get('danger') }}</p>
+                    @endif
+
                     <div class="row">
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="col-lg-6">
+
+                            <!-- Basic Card Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Inbox</h6>
+                                </div>
                                 <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Investment (Total)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b>$</b> {{number_format($sum)}}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
+                                @foreach($inboxes as $inbox)
+                                    <b>{{$inbox->name}}:</b> {{ $inbox->desc }}
+                                    <a href="#" class="btn btn-link" data-toggle="modal" data-target="#deleteModal" style="color:red;">Delete</a><br/>
+                                @endforeach
                                 </div>
                             </div>
+
                         </div>
                     </div>
-                                    @if(Session::has('message'))
-                                    <p class="alert alert-success">{{ Session::get('message') }}</p>
-                                    @endif
-                                    @if(Session::has('danger'))
-                                    <p class="alert alert-danger">{{ Session::get('danger') }}</p>
-                                    @endif
-                                    @if(Session::has('update'))
-                                    <p class="alert alert-success">{{ Session::get('update') }}</p>
-                                    @endif
-                                        <!-- DataTales Example -->
-                                        <div class="card shadow mb-4">
-                                          <div class="card-header py-3">
-                                              <h6 class="m-0 font-weight-bold text-primary">Available Investment</h6>
-                                          </div>
-                                          <div class="card-body">
-                                              <div class="table-responsive">                                              
-                                                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                                    <thead>
-                                                          <tr>
-                                                              <th>Name</th>
-                                                              <th>Amount</th>
-                                                              <th>Description</th>
-                                                              <th>Time Created</th>
-                                                              <th>Action</th>                                                              
-                                                          </tr>
-                                                      </thead>
-                                                      <tfoot>
-                                                          <tr>
-                                                            <th>Name</th>
-                                                            <th>Amount</th>
-                                                            <th>Description</th>
-                                                            <th>Time Created</th>
-                                                            <th>Action</th>
-                                                          </tr>
-                                                      </tfoot>
-                                                      <tbody>
-                                                        @foreach($investments as $investment) 
-                                                          <tr>
-                                                              <td>{{$investment->name}}</td>
-                                                              <td><b>$</b> {{number_format($investment->amount)}}</td>
-                                                              <td>{{$investment->description}}</td>
-                                                              <td>{{$investment->created_at->diffForHumans()}}</td>
-                                                              <td>
-                                                                 <a href="{{route('activities')}}" class="btn btn-light" style="color:rgb(129, 118, 230)">View</a>
-                                                               
-                                                                </td>
-                                                          </tr>
-                                                          @endforeach
-                                                      </tbody>                                                 
-                                                  </table>
-                                                 
-                                              </div>
-                                          </div>
-                                      </div>
-                  
 
+                    <div class="card">
+                        <div class="card-header">{{ __('Send Message') }}</div>
+                        
+                        <div class="card-body">
+                            <form method="POST" action="{{ route('front.send') }}">
+                                @csrf
+        
+                                <div class="row mb-3">
+
+                                    <div class="col-md-6">
+                                        <input id="name" type="hidden" class="form-control @error('name') is-invalid @enderror" name="name" value="Johnny"  autocomplete="name" autofocus>
+        
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+        
+                                <div class="row mb-3">
+                                    <label for="message" class="col-md-4 col-form-label text-md-end">{{ __('Message') }}</label>
+        
+                                    <div class="col-md-6">
+                                        <input id="desc" type="text" class="form-control @error('desc') is-invalid @enderror" name="desc"  autocomplete="desc">
+        
+                                        @error('message')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+        
+        
+                                <div class="row mb-0">
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Send') }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
 
