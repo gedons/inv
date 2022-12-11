@@ -40,6 +40,10 @@ class HomeController extends Controller
         return view('activities', compact('activities','sum'));
     }
 
-
+    public function inbox()
+    {
+        $messages = Message::all();
+        return view('inboxes', compact('messages'));
+    }
 
 }

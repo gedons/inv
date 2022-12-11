@@ -31,7 +31,7 @@
      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -43,7 +43,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{route('home')}}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -56,24 +56,16 @@
             Interface
         </div>
 
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fas fa-fw fa-cog"></i>
-                <span>Invest</span>
-            </a>
-        </li>
-
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{route('activities')}}">
                 <i class="fas fa-fw fa-flag"></i>
                 <span>Activities</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{route('front.inbox')}}">
                 <i class="fas fa-fw fa-envelope"></i>
                 <span>Message</span>
                 <span class="badge badge-danger badge-counter">3+</span>
@@ -81,7 +73,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{route('logout')}}">
                 <i class="fas fa-fw fa-user"></i>
                 <span>Logout</span>
             </a>

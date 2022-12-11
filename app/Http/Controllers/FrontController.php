@@ -16,11 +16,6 @@ class FrontController extends Controller
     {
         $this->middleware('auth');
     }
-    
-    public function inbox()
-    {
-        return view('inboxes');
-    }
 
     public function sent(MessageRequest $request)
     {
