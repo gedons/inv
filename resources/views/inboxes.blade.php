@@ -91,7 +91,21 @@
         </ul>
         <!-- End of Sidebar -->
         <div id="content-wrapper" class="d-flex flex-column">
+             <!-- Main Content -->
+             <div id="content">
 
+            </div>
+
+
+              <!-- Footer -->
+              <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>&copy;<a href="#" target="_blank">Johnny ❤💖 Jena Olsen </a> 2022. All right reserved</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
         </div>
 
 </div>
