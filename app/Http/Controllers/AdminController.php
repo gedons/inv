@@ -16,7 +16,7 @@ class AdminController extends Controller
     public function loginAdmin(Request $request){
 
           if (Auth::guard('admin')->attempt(['email'=>$request['email'], 'password'=>$request['password']])) {
-            return Redirect('admin/dashboard')->with('message', 'Logged In Successfully....');
+            return Redirect('admin/dashboard')->with('message', 'Logged In Successfully!!!');
         }
         else{
             return Redirect()->back()->with('message', 'Invalid Login Details');
