@@ -199,6 +199,13 @@
                     <h1 class="h3 mb-0 text-gray-800">Message</h1>
                 </div>
 
+                @if(Session::has('message'))
+                    <p class="alert alert-success">{{ Session::get('message') }}</p>
+                    @endif
+                    @if(Session::has('danger'))
+                    <p class="alert alert-danger">{{ Session::get('danger') }}</p>
+                    @endif
+
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="card shadow mb-4">
