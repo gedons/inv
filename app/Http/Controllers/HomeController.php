@@ -42,8 +42,9 @@ class HomeController extends Controller
 
     public function message()
     {
+        $activities = Investment::all();
         $messages = Message::all();
-        return view('message', compact('messages'));
+        return view('message', compact('messages','activities'));
     }
 
 
