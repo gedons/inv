@@ -28,8 +28,8 @@ class HomeController extends Controller
     {
         $investments = Investment::all();
         $sum = Investment::sum('amount');
-        $messageCount = Message::all();
-        return view('home',compact('investments','sum','messageCount'));
+        // $messageCount = Message::all();
+        return view('home',compact('investments','sum'));
     }
 
     public function activities()
@@ -46,8 +46,5 @@ class HomeController extends Controller
         return view('message', compact('sum'));
     }
 
-    public function messageSent(Request $request)
-    {
-       
-    }
+
 }
