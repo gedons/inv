@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\Investment;
-use App\Events\Message;
+use App\Models\Message;
 
 class HomeController extends Controller
 {
