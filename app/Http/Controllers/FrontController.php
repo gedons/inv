@@ -27,8 +27,8 @@ class FrontController extends Controller
         $data = Message::create($validated);
 
         //notify
-        $user = User::first();
-        $user->notify(new MessageCreated($inbox));
+        // $user = User::first();
+        // $user->notify(new MessageCreated($inbox));
 
        // Notification::send(auth()->user(), new UserCreatePost($data['title']));
         return Redirect()->back()->with('message', 'Message Sent Successfully!!!');
