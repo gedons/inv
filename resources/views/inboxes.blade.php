@@ -200,27 +200,8 @@
                 </div>
 
 
-                <div class="row">
-
-                    <div class="col-lg-6">
-
-                        <!-- Basic Card Example -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Inbox</h6>
-                            </div>
-                            <div class="card-body">
-                            <!-- @foreach($messages as $message)
-                                <b>{{$message->name}}:</b> {{ $message->desc }}
-                                <a href="#" class="btn btn-link" data-toggle="modal" data-target="#deleteModal" style="color:red;">Delete</a><br/>
-                            @endforeach -->
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
                 
-                
+
 
             </div>
 
