@@ -48,11 +48,6 @@ class HomeController extends Controller
 
     public function messageSent(Request $request)
     {
-        event(new Message(
-            $request->input('username'),
-            $request->input('message')
-        )
-      );
-        return ["success" => true];
+       
     }
 }

@@ -19,7 +19,6 @@
   <link href="{{ asset('css/admin_css/nucleo-svg.css') }}" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="{{ asset('css/admin_css/soft-ui-dashboard.css?v=1.0.2') }}" rel="stylesheet" />
-  @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
 <body class="g-sidenav-show   bg-white">
