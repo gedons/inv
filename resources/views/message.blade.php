@@ -215,17 +215,17 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Inbox</h6>
                                 </div>
                                 <div class="card-body">
-                                @foreach($messages as $message)
+                                <!-- @foreach($messages as $message)
                                     <b>{{$message->name}}:</b> {{ $message->desc }}
                                     <a href="#" class="btn btn-link" data-toggle="modal" data-target="#deleteModal" style="color:red;">Delete</a><br/>
-                                @endforeach
+                                @endforeach -->
                                 </div>
                             </div>
 
                         </div>
                     </div>
 
-                    <div class="card">
+                    <!-- <div class="card">
                         <div class="card-header">{{ __('Send Message') }}</div>
                         
                         <div class="card-body">
@@ -269,7 +269,7 @@
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- /.container-fluid -->
 
