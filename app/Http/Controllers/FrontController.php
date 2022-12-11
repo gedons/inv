@@ -32,7 +32,7 @@ class FrontController extends Controller
         // $user = User::first();
         // $user->notify(new MessageCreated($inbox));
 
-        Notification::send(auth()->user(), new MessageCreated($inbox));
+        //Notification::send(auth()->user(), new MessageCreated($inbox));
         return Redirect()->back()->with('message', 'Message Sent Successfully!!!');
     }
 
