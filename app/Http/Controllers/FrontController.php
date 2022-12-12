@@ -8,7 +8,7 @@ use App\Models\Message;
 use App\Models\User;
 use App\Notifications\MessageCreated;
 use Auth;
-use Notification;
+
 
 class FrontController extends Controller
 {
@@ -24,8 +24,8 @@ class FrontController extends Controller
         $data = Message::create($validated);
 
         //notify
-        // $user = User::first();
-        // $user->notify(new MessageCreated($inbox));
+        $user = User::first();
+        $user->notify(new MessageCreated($data));
 
         //Notification::send(auth()->user(), new MessageCreated($inbox));
         return Redirect()->back()->with('message', 'Message Sent Successfully!!!');

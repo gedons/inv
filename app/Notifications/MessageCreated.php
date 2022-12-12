@@ -12,16 +12,16 @@ class MessageCreated extends Notification
 {
     use Queueable;
 
-    private Message $inbox;
+    private Message $announcement;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Message $inbox)
+    public function __construct(Message $announcement)
     {
-        $this->inbox = $inbox;
+        $this->announcement = $announcement;
     }
 
     /**
@@ -44,10 +44,10 @@ class MessageCreated extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->greeting('You just received a message from', $this->inbox->name)
-                    ->line($this->inbox->desc)
-                    ->action('Go Home', url('/'))
-                    ->line('Thank you!!!');
+                        ->greeting('Hello 👋')
+                        ->line($this->announcement->desc)
+                        ->action('Go to App', url('/'))
+                        ->line('Thank you for using our application!');
     }
 
     /**
