@@ -28,7 +28,7 @@ class FrontController extends Controller
         $user->notify(new MessageCreated($data));
 
         //Notification::send(auth()->user(), new MessageCreated($inbox));
-        return Redirect()->back()->with('message', 'Message Sent Successfully!!!');
+        return Redirect()->back()->with('message', 'Message Sent Successfully!!');
     }
 
     public function delete($id){
