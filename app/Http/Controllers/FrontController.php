@@ -19,9 +19,9 @@ class FrontController extends Controller
 
     public function sent(MessageRequest $request)
     {
-        $validated = $request->validated();
+        $validateds = $request->validated();
 
-        $data = Message::create($validated);
+        $data = Message::create($validateds);
 
         //notify
         $user = User::first();
